@@ -9,7 +9,8 @@ public class Pedido {
     private double importe;
     private int id;
 
-    public Pedido(Cliente cliente, int id) {
+    public Pedido(Cliente cliente, int id, ArrayList<Desayuno> desayunos) {
+        this.desayunos = desayunos;
         this.cliente = cliente;
         this.id = id;
     }

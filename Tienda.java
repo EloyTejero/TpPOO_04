@@ -34,6 +34,15 @@ public class Tienda {
     public void eliminarPedido(Pedido pedido){
         pedidos.remove(pedido);
     }
+
+    public ArrayList<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public ArrayList<Desayuno> getDesayunos() {
+        return desayunos;
+    }
+    
     
     
 }
