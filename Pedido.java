@@ -13,11 +13,12 @@ public class Pedido {
         this.desayunos = desayunos;
         this.cliente = cliente;
         this.id = id;
+        System.out.println("id: "+id);
     }
     
     public boolean descuento(){
         boolean descuentoValido=false;
-        if(id%11==0){
+        if((id%11)==0 && id !=0){
             descuentoValido=true;
         }
         

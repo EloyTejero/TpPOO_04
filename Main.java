@@ -84,10 +84,10 @@ public class Main {
     }
     
     public static ArrayList<Desayuno> seleccionarDesayuno(ArrayList<Desayuno> desayunosDisponibles){
-        int i = 0;
         int opc;
         ArrayList<Desayuno> desayunosSeleccionados = new ArrayList<>();
-        do {   
+        do {
+            int i = 0;
             System.out.println("Menu:");
             for(Desayuno d: desayunosDisponibles){
                 System.out.println((i+1)+". "+d.toString());
