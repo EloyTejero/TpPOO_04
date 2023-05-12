@@ -15,24 +15,24 @@ public class Tienda {
     private ArrayList<Pedido> pedidos;
 
     public Tienda() {
-    desayunos = new ArrayList<>();
-    pedidos = new ArrayList<>();
+        desayunos = new ArrayList<>();
+        pedidos = new ArrayList<>();
     }
     
     public void agregarDesayuno(Desayuno desayuno){
         desayunos.add(desayuno);
     }
     
-    public void eliminarDesayuno(Desayuno desayuno){
-        desayunos.remove(desayuno);
+    public void eliminarDesayuno(int idDesayuno){
+        desayunos.remove(idDesayuno);
     }
     
     public void hacerPedido(Pedido pedido){
         pedidos.add(pedido);
     }
     
-    public void eliminarPedido(Pedido pedido){
-        pedidos.remove(pedido);
+    public void eliminarPedido(int idPedido){
+        pedidos.remove(idPedido);
     }
 
     public ArrayList<Pedido> getPedidos() {

@@ -12,11 +12,13 @@ public class Desayuno {
     String nombre;
     Double precio;
     String descripccion;
+    int id;
 
-    public Desayuno(String nombre, Double precio, String descripccion) {
+    public Desayuno(String nombre, Double precio, String descripccion, int id) {
         this.nombre = nombre;
         this.precio = precio;
         this.descripccion = descripccion;
+        this.id = id;
     }
 
     public String getNombre() {
