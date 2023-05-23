@@ -3,9 +3,9 @@ package TpPOO_04;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
-    
-    static Scanner in = new Scanner(System.in); 
+public class Main{  
+
+  static Scanner in = new Scanner(System.in); 
     
     public static void main(String[] args ){
         Tienda tienda = new Tienda();
@@ -21,8 +21,15 @@ public class Main {
             in.nextLine();
             switch (opc) {
                 case 1:
-                    Pedido pedido = crearPedido(tienda.getDesayunos(),tienda.getPedidos().size());
-                    tienda.hacerPedido(pedido);
+                    if(tienda.getDesayunos().size() > 0){
+                        Pedido pedido = crearPedido(tienda.getDesayunos(),tienda.getPedidos().size());
+                        pedido.calcularPrecioTotal();
+                        pedido.MostrarDatos();
+                        tienda.hacerPedido(pedido);
+                    }
+                    else{
+                        System.out.println("Primero se deben ingresar desayunos");
+                    }
                     break;
                 case 2:
                     System.out.println("Ingrese el numero del pedido a eliminar: ");
@@ -43,10 +50,10 @@ public class Main {
                     opc=0;
                     break;
                 case 5:
-                    for (int i = 0; i < tienda.getPedidos().size(); i++) {
-                        tienda.getPedidos().get(i).calcularPrecioTotal();
-                        System.out.println(tienda.getPedidos().get(i).toString());
-                    }
+                    System.out.println("Ingrese el id del pedido que desea ver: ");
+                    opc = in.nextInt();
+                    in.nextLine();
+                    tienda.mostrarUnPedido(opc);
             }
         }while(opc!=6);
     }
@@ -90,14 +97,22 @@ public class Main {
             int i = 0;
             System.out.println("Menu:");
             for(Desayuno d: desayunosDisponibles){
-                System.out.println((i+1)+". "+d.toString());
+                System.out.print((i+1)+". ");
+                d.mostrarDatos();
                 i++;
             }
             
             System.out.print("Ingrese el numero del que desea: ");
             opc = in.nextInt();
             in.nextLine();
-            desayunosSeleccionados.add(desayunosDisponibles.get(opc-1));
+            
+            String nombre = desayunosDisponibles.get(opc-1).getNombre();
+            String descripcion = desayunosDisponibles.get(opc-1).getDescripccion();
+            double precio = desayunosDisponibles.get(opc-1).getPrecio();
+            
+            Desayuno desayunoSeleccionado = new Desayuno(nombre, precio, descripcion);
+            
+            desayunosSeleccionados.add(desayunoSeleccionado);
             
             System.out.println("Desea agregar mas desayunos: 1:si 2:no");
             opc = in.nextInt();

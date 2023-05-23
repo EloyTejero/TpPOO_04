@@ -1,24 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package TpPOO_04;
 
-/**
- *
- * @author ET36
- */
 public class Desayuno {
-    String nombre;
-    Double precio;
-    String descripccion;
-    int id;
+    private String nombre;
+    private Double precio;
+    private String descripccion;
+    private int id;
 
     public Desayuno(String nombre, Double precio, String descripccion, int id) {
         this.nombre = nombre;
         this.precio = precio;
         this.descripccion = descripccion;
         this.id = id;
+    }
+    
+    public Desayuno(String nombre, Double precio, String descripccion) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descripccion = descripccion;
+    }
+    
+    public void mostrarDatos(){
+        System.out.println("\t"+nombre+"\n\tDescripcion: "+descripccion+"\n\tPrecio: "+precio);
     }
 
     public String getNombre() {
@@ -44,12 +46,10 @@ public class Desayuno {
     public void setDescripccion(String descripccion) {
         this.descripccion = descripccion;
     }
-    
-    
 
-    @Override
-    public String toString() {
-        return "Desayuno{" + "nombre=" + nombre + ", precio=" + precio + ", descripccion=" + descripccion + '}';
+    public int getId() {
+        return id;
     }
+    
     
 }

@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package TpPOO_04;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author ET36
- */
 public class Tienda {
     private ArrayList<Desayuno> desayunos;
     private ArrayList<Pedido> pedidos;
@@ -20,11 +12,16 @@ public class Tienda {
     }
     
     public void agregarDesayuno(Desayuno desayuno){
-        desayunos.add(desayuno);
+        desayunos.add(desayuno);        
     }
     
     public void eliminarDesayuno(int idDesayuno){
-        desayunos.remove(idDesayuno);
+        if(idDesayuno<pedidos.size() && idDesayuno>=0){
+            desayunos.remove(idDesayuno);
+        }
+        else{
+            System.out.println("No existe ese desayuno");
+        }
     }
     
     public void hacerPedido(Pedido pedido){
@@ -32,7 +29,21 @@ public class Tienda {
     }
     
     public void eliminarPedido(int idPedido){
-        pedidos.remove(idPedido);
+        if(idPedido<pedidos.size() && idPedido>=0){
+            pedidos.remove(idPedido);
+        }
+        else{
+            System.out.println("No existe ese pedido");
+        }
+    }
+    
+    public void mostrarUnPedido(int id){
+        if(id<pedidos.size() && id>=0){
+            pedidos.get(id).MostrarDatos();
+        }
+        else{
+            System.out.println("No existe ese pedido");
+        }
     }
 
     public ArrayList<Pedido> getPedidos() {
@@ -42,7 +53,4 @@ public class Tienda {
     public ArrayList<Desayuno> getDesayunos() {
         return desayunos;
     }
-    
-    
-    
 }
