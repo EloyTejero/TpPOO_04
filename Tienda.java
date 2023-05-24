@@ -1,17 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package TpPOO_04;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- *
- * @author lolo
- */
 public class Tienda {
     private ArrayList<Desayuno> desayunos;
     private ArrayList<Pedido> pedidos;
@@ -44,7 +36,7 @@ public class Tienda {
     private void hacerDescuento(Pedido pedido){
         Random randomNumber = new Random();
         int desayunoAdescontar = randomNumber.nextInt(pedido.getDesayunos().size());
-        if ((pedidos.size()+1) % 11 == 0 ){
+        if ((pedidos.size()+1) % 2 == 0 ){
             pedido.descontarDesayuno(desayunoAdescontar);
         }
     }

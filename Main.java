@@ -126,25 +126,33 @@ public class Main {
     }
 
     public static ArrayList<Desayuno> seleccionarDesayuno(ArrayList<Desayuno> desayunosDisponibles) {
-        int opc;
-        int cont = 0;
-        System.out.println("digite cantidad de desayunos");
-        int cantDesayunos = in.nextInt();
+        int opc=0;
         ArrayList<Desayuno> desayunosSeleccionados = new ArrayList<>();
-        for (int i = 0; i < cantDesayunos; i++) {
+        
+        do{
+            int i=0;
 
             System.out.println("Menu:");
             for (Desayuno d : desayunosDisponibles) {
-                System.out.println((cont + 1) + ". " + d.toString());
-                cont++;
+                System.out.println((i + 1) + ". " + d.toString());
+                i++;
             }
             System.out.print("Ingrese el id del que desea: ");
             opc = in.nextInt();
             in.nextLine();
-            desayunosSeleccionados.add(desayunosDisponibles.get(opc));
+            
+            String nombre = desayunosDisponibles.get(opc).getNombre();
+            String descripcion = desayunosDisponibles.get(opc).getDescripccion();
+            Double precio = desayunosDisponibles.get(opc).getPrecio();
+            int idDesayuno = desayunosDisponibles.get(opc).getId();
+            
+            desayunosSeleccionados.add(new Desayuno(nombre, precio, descripcion, idDesayuno));
 
-
-        }
+            System.out.println("Desea ingresar otro desayuno mas? 1.SI 2.NO");
+            opc = in.nextInt();
+            in.nextLine();
+            
+        }while(opc!=2);
 
 
         return desayunosSeleccionados;

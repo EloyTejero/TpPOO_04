@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package TpPOO_04;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author lolo
- */
 public class Pedido {
 
     private Cliente cliente;
@@ -26,8 +18,7 @@ public class Pedido {
 
 
     public void descontarDesayuno(int id){
-        double importeDesayuno = desayunos.get(id).getPrecio();
-        importe = importe - importeDesayuno;
+        desayunos.get(id).setPrecio(0.0);
     }
 
 
