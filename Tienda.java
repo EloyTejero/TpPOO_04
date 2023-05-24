@@ -1,7 +1,17 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package TpPOO_04;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
+/**
+ *
+ * @author lolo
+ */
 public class Tienda {
     private ArrayList<Desayuno> desayunos;
     private ArrayList<Pedido> pedidos;
@@ -12,38 +22,47 @@ public class Tienda {
     }
     
     public void agregarDesayuno(Desayuno desayuno){
-        desayunos.add(desayuno);        
+        desayunos.add(desayuno);
     }
     
     public void eliminarDesayuno(int idDesayuno){
-        if(idDesayuno<pedidos.size() && idDesayuno>=0){
-            desayunos.remove(idDesayuno);
-        }
-        else{
-            System.out.println("No existe ese desayuno");
-        }
+        desayunos.remove(idDesayuno);
     }
     
-    public void hacerPedido(Pedido pedido){
+    public void hacerPedido(Cliente cliente, int id, ArrayList<Desayuno> desayunos){
+        Pedido pedido = new Pedido(cliente,id,desayunos);
+        hacerDescuento(pedido);
+        pedido.calcularPrecioTotal();
         pedidos.add(pedido);
+        System.out.println("\npedido realizado \n-------------------------------------------------------------------------------------------------");
+        pedido.imprimirPedido();
+        System.out.println("\n--------------------------------------------------------------------------------------------------------------------");
+
     }
+
+
+    private void hacerDescuento(Pedido pedido){
+        Random randomNumber = new Random();
+        int desayunoAdescontar = randomNumber.nextInt(pedido.getDesayunos().size());
+        if ((pedidos.size()+1) % 11 == 0 ){
+            pedido.descontarDesayuno(desayunoAdescontar);
+        }
+    }
+
+
+    public List<Pedido> obtenerPedidoCliente(String nombreCliente){
+        List<Pedido> pedidoCliente = new ArrayList<>();
+        for (Pedido p : pedidos){
+            if (p.getCliente().getNombre().equals(nombreCliente)){
+                pedidoCliente.add(p);
+            }
+        }
+        return pedidoCliente;
+    }
+
     
     public void eliminarPedido(int idPedido){
-        if(idPedido<pedidos.size() && idPedido>=0){
-            pedidos.remove(idPedido);
-        }
-        else{
-            System.out.println("No existe ese pedido");
-        }
-    }
-    
-    public void mostrarUnPedido(int id){
-        if(id<pedidos.size() && id>=0){
-            pedidos.get(id).MostrarDatos();
-        }
-        else{
-            System.out.println("No existe ese pedido");
-        }
+        pedidos.remove(idPedido);
     }
 
     public ArrayList<Pedido> getPedidos() {

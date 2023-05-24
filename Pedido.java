@@ -1,8 +1,16 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package TpPOO_04;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author lolo
+ */
 public class Pedido {
 
     private Cliente cliente;
@@ -10,48 +18,41 @@ public class Pedido {
     private double importe;
     private int id;
 
-    public Pedido() {
-    }
-
     public Pedido(Cliente cliente, int id, ArrayList<Desayuno> desayunos) {
         this.desayunos = desayunos;
         this.cliente = cliente;
         this.id = id;
     }
 
-    public boolean descuento() {
-        boolean descuentoValido = false;
-        if ((id%10) == 0 && id !=0) {
-            descuentoValido = true;
-        }
 
-        return descuentoValido;
+    public void descontarDesayuno(int id){
+        double importeDesayuno = desayunos.get(id).getPrecio();
+        importe = importe - importeDesayuno;
     }
+
+
 
     public void calcularPrecioTotal() {
-        if (descuento()) {
-            desayunos.get(0).setPrecio(0.0);
-        }
-        double precioTotal = 0;
         for (Desayuno d : desayunos) {
-            precioTotal += d.getPrecio();
+            importe += d.getPrecio();
         }
-        importe = precioTotal;
     }
 
-    public void MostrarDatos() {
-        System.out.println("-----------------------------------");
-        System.out.println("Pedido n°"+id);
-        System.out.println("A nombre de: "+cliente.getNombre());
-        System.out.println("Contenido:");
-        for (Desayuno d : desayunos) {
-            d.mostrarDatos();
-        }
-        System.out.println("Precio total: "+importe);
-        System.out.println("-----------------------------------");
+
+    public ArrayList<Desayuno> getDesayunos() {
+        return desayunos;
     }
 
-    public int getId() {
-        return id;
+
+    public void imprimirPedido() {
+        System.out.println("Pedido:  Nombre del cliente: " + cliente.getNombre() + " - importe total: " + importe);
+        for (Desayuno d :desayunos){
+            System.out.println(d);
+        }
+    }
+
+
+    public Cliente getCliente() {
+        return cliente;
     }
 }
